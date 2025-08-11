@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #1E75D6;
+    --color-light: #F8FAFC;
+}
+
+.container {
+    @apply max-w-[1378px] px-2.5 mx-auto
+}
+
+body {
+    @apply bg-light
+}

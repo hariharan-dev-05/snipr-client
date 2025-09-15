@@ -1,8 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import snipr from "../assets/snipr.svg";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+
+  const handleGetStarted = () => {
+    if (isAuthenticated) navigate("/dashboard");
+    else navigate("/auth");
+  };
+
   return (
     <div className="shadow">
       <div className="container flex justify-between items-center py-2">
@@ -13,7 +21,7 @@ const Navbar = () => {
 
         <button
           className="bg-primary px-6 py-3 text-white rounded-4xl cursor-pointer"
-          onClick={() => navigate("/auth")}
+          onClick={handleGetStarted}
         >
           Get Started
         </button>

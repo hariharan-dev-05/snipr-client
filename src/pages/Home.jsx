@@ -9,11 +9,11 @@ const Home = () => {
       <div className="container">
         <div className="flex flex-col text-center gap-5 py-7">
           <img className="h-24" src={logo} alt="Snipr Logo" />
-          <p className="text-[28px]">
+          <p className="text-xl sm:text-[28px]">
             Snipr: Built to Shorten. Designed to Perform.
           </p>
         </div>
-        <div className="px-10">
+        <div className="sm:px-10">
           <img
             className="border-2 border-primary/60 rounded shadow"
             src={brandingImg}

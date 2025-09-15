@@ -1,20 +1,32 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { logIn } from "../api";
+import { useAuth } from "../context/AuthContext";
 
 const Signin = () => {
+  const { setIsAuthenticated, setuserName } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Signing in:", formData);
-    // Auth logic here
+    setIsLoading(true);
+    const res = await logIn(formData);
+    setIsLoading(false)
+    if (res.status === 200) {
+      setFormData({ email: "", password: "" });
+      navigate("/dashboard");
+      setuserName(res.data.name);
+      setIsAuthenticated(true);
+    }
   };
 
   return (
@@ -76,9 +88,10 @@ const Signin = () => {
       {/* Submit */}
       <button
         type="submit"
+        disabled={isLoading}
         className="w-full py-3 px-4 bg-primary text-light font-semibold rounded-lg shadow-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition"
       >
-        Sign In
+        {isLoading ? "Signing In..." : "Sign In"}
       </button>
 
       {/* Link */}

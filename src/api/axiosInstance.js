@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://snipr-server-production.up.railway.app",
+  baseURL: "http://localhost:3000/",
   withCredentials: true,
 });
 

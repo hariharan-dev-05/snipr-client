@@ -54,11 +54,27 @@ export const getUrls = () => {
 
 export const createUrl = async (originalUrl) => {
   try {
-    const response = await axiosInstance.post("api/snipr", { originalUrl });
+    const host = window.location.origin;
+    const response = await axiosInstance.post("api/snipr", {
+      originalUrl,
+      host,
+    });
     return response;
   } catch (error) {
     console.error("Error creating URL:", error);
     toast.error(error?.response?.data?.message || "Failed to create URL");
+  }
+};
+
+export const redirectBack = async (urlId) => {
+  try {
+    const { data } = await axiosInstance.get(
+      "/" + urlId + "?host=" + window.location.origin
+    );
+    return data;
+  } catch (error) {
+    console.error("Error during redirection:", error);
+    toast.error(error?.response?.data?.message || "Redirection failed");
   }
 };
 

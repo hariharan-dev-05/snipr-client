@@ -73,18 +73,6 @@ const Signin = () => {
         />
       </div>
 
-      {/* Remember + Forgot */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center text-primary text-sm">
-        </div>
-        <Link
-          to="/forgot-password"
-          className="text-sm text-primary hover:underline"
-        >
-          Forgot password?
-        </Link>
-      </div>
-
       {/* Submit */}
       <button
         type="submit"

@@ -100,7 +100,7 @@ const Snipr = () => {
               <Card
                 key={url._id}
                 originalUrl={url.originalUrl}
-                shortUrl={url.fullShortUrl}
+                shortUrl={`${window.location.origin}/` + url.fullShortUrl}
                 clicks={url.clicks}
                 handleDelete={() => handleDeleteSnip(url._id)}
               />

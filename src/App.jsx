@@ -6,6 +6,7 @@ import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 import AuthProvider from "./context/AuthContext";
 import { ToastContainer } from "react-toastify";
+import ServerCallForRedirect from "./components/ServerCallForRedirect";
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Snipr />} />
+        <Route path="/:id" element={<ServerCallForRedirect />} />
 
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<AuthRedirect />} />
